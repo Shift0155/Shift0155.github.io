@@ -4,6 +4,8 @@ body {
 .div {
     border: 4px black;
     border-style: outset;
+    border-radius: 10px;
+    width: 100px;
 }
 .div:hover {
     border-style: inset;
