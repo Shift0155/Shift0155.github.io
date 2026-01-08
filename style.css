@@ -1,3 +1,10 @@
 body {
     background-color: hsl(0, 0%, 50%);
 }
+.div {
+    border: 4px black;
+    border-style: outset;
+}
+.div:hover {
+    border-style: inset;
+}
