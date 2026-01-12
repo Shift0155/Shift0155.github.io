@@ -2,28 +2,94 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <script>
-        </script>
         <style>
             body {
-                background-color: hsl(0, 0%, 50%);
+                background-color: hsl(0, 0%, 75%);
             }
             .div {
                 border: 4px black;
                 border-style: outset;
                 border-radius: 10px;
-                width: 100px;
+                width: 9em;
             }
             .div:hover {
                 border-style: inset;
+            }
+            span {
+                font-family: 'Courier New', Courier, monospace;
+            }
+            a {
+                color: black;
+                font-style: normal;
+                cursor: not-allowed;
+            }
+            fieldset {
+                width: 15em;
             }
         </style>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <title>WOW! ITS A SITE</title>
     </head>
     <body>
-        <center><div class="div">Yes, it's a test website.</div></center>
+        <fieldset>
+            <legend>My projects</legend>
+                <ul>
+                    <li><a href="./projs/1/index.html"><span class="babel">Text (very small)</span></a></li>
+                </ul>
+        </fieldset>
+        <br>
+        <div class="div"><a href="mailto:maxshmatov34@gmail.com">Yes, it's a test website.</a></div>
+        <br>
         <b>HEX: 027EA4</b> <i>from PoMAF</i>
+
+        <!-- babel script -->
+        <script>
+            const alphabet = "abcdefghijklmnopqrstuvwxyz";
+            const base = alphabet.length;
+
+            /* КРУТИЛКА */
+            let SPEED = 0; // ms
+
+            function increment(word) {
+            let arr = word.split("");
+            let i = arr.length - 1;
+
+            while (i >= 0) {
+                let pos = alphabet.indexOf(arr[i]);
+                if (pos + 1 < base) {
+                arr[i] = alphabet[pos + 1];
+                return arr.join("");
+                } else {
+                arr[i] = alphabet[0];
+                i--;
+                }
+            }
+            return arr.join("");
+            }
+
+            document.querySelectorAll(".babel").forEach(el => {
+            const original = el.textContent;
+            let current = original;
+            let interval = null;
+
+            el.addEventListener("mouseenter", () => {
+                if (interval) return;
+
+                interval = setInterval(() => {
+                current = increment(current);
+                el.textContent = current;
+                }, SPEED);
+            });
+
+            el.addEventListener("mouseleave", () => {
+                clearInterval(interval);
+                interval = null;
+                current = original;
+                el.textContent = original;
+            });
+            });
+
+        </script>
     </body>
 </html>
 
